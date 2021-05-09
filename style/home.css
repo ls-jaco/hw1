@@ -1,0 +1,294 @@
+*{
+  box-sizing: border-box;
+  margin: 0px 0px;
+  padding: 0;
+  cursor: default;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+}
+
+header {
+  background-image: url(./img/miles.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 600px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.titolo {
+  color: white;
+  font-size: 150px;
+  letter-spacing: 4px;
+  margin-right: 60px;
+}
+
+.nav {
+  background-color: #28466bc7;
+  position: fixed;
+  color: white;
+  display: flex;
+  padding: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size:30px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo {
+  height: 50px;
+  width: 200px;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+#links a {
+  margin: 15px;
+}
+
+#menu {
+  display: none;
+  margin-right: 12px;
+}
+
+#menu div
+  {
+  width: 40px;
+  height: 2px;
+  background-color: rgb(255, 255, 255);
+  margin:8px 2px;
+}
+
+section{
+  max-width: none;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 220px;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  padding-bottom: 150px;
+}
+
+
+#ricerca {
+  padding: 150px 0 150px 0;
+}
+
+#container {
+  height: 80px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px #cecece;
+  max-width: 640px;
+  background: white;
+  justify-content: flex-start;
+  display: flex;
+  padding-left: 40px;
+  align-items: center;
+  line-height: 24px;
+  border-radius: 100px;
+  flex-basis: 100%;
+}
+
+#ins {
+  font-size: 50px;
+  line-height: 50px;
+  color: #aaa;
+  flex-basis: 80%;
+  width: 100%;
+}
+
+input[type=text] {
+  width: 90%;
+  display: flex;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 42px;
+}
+
+input[type=text]:focus {
+  background-color: #28466b52;
+}
+
+#search_button {
+  padding: inherit;
+  height: 100%;
+  align-items: center;
+  padding: 30px;
+  font-size: 30px;
+  display: flex;
+  flex-grow: 1;
+  border-radius: 0 60px 60px 0;
+  justify-content: center;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+#search_button:hover {
+  background: #28466bc7;
+  color: white;
+}
+
+#search_button:focus {
+  outline: none;
+}
+
+.contenuti {
+  margin: 0 auto;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  font-size: 50px;
+}
+
+
+.link-button {
+  margin: 0 auto;
+  background-color: white;
+  color:black;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 50px;
+  padding: 0 20px 0 20px;
+}
+
+.link-button:hover {
+  background: #28466bc7;
+  cursor: pointer;
+}
+
+.link-button:focus {
+  outline: none;
+}
+.contenuti img {
+  height: 500px;
+  width: 500px;
+  box-shadow: 0 0 10px #000000;
+  border-radius: 10px;
+}
+
+.contenuti h1 {
+  text-align: center;
+  font-size: 45px;
+  text-transform: uppercase;
+}
+
+.contenuti p {
+  padding-top: 30px;
+  width: 30%;
+  color: black;
+  font-size: 30px;
+  line-height: 30px;
+  margin: auto;
+  font-family: Verdana, sans-serif;
+}
+
+footer {
+  background-color: #28466B;
+  padding: 25px;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  letter-spacing: 2px;
+  word-spacing: 4px;
+}
+
+@media (max-width: 750px) {
+
+  header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+
+  header h1 strong {
+    font-size: 0.3em;
+    letter-spacing: 2px;
+  }
+
+	#logo {
+	  font-size: 1em;
+	}
+
+  .nav-link {
+    display: none;
+  }
+
+  #menu {
+    display: block;
+  }
+
+  .titolo {
+    font-size: 125px;
+    top: 30%;
+    margin-right: 0px;
+  }
+  
+  #ricerca{
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+  .contenuti {
+    padding: 0 20px 0 20px;
+    flex-direction: column;
+    font-size: 0.5em;
+    padding-top: 3em;
+    padding-bottom: 1em;
+  }
+
+  .contenuti img {
+    width: 100%;
+    height:auto;
+  }
+
+  .link-button {
+    font-size: 40px;
+    margin-top: 2em;
+  }
+
+  .contenuti p {
+    text-align: center;
+    color: black;
+    font-size: 20px;
+  }
+
+  #b2 {
+    padding-top: 9em;
+  }
+
+  footer {
+    padding: 10px;
+    font-size: 2em;
+  }
+} 
