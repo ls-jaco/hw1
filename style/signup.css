@@ -50,6 +50,10 @@
     z-index: 2;
   }
 
+  .nav-link {
+      color: white;
+  }
+
   .mobile__nav {
     display: none;
   }
@@ -69,7 +73,7 @@
     background-color: rgba(0, 0, 0, 0.3);
   }
 
-  #links a {  
+  #links a {
     margin: 15px;
   }
   
@@ -85,51 +89,9 @@
     width: 100%;
     font-family: 'Open Sans', sans-serif;
     padding-bottom: 150px;
-  
   }
 
 
-  #ricerca {
-    margin: 150px 0 150px 0;
-  }
-
-  #container {
-    height: 80px;
-    box-sizing: border-box;
-    box-shadow: 0 0 10px #cecece;
-    max-width: 640px;
-    background: white;
-    justify-content: flex-start;
-    display: flex;
-    padding-left: 40px;
-    align-items: center;
-    line-height: 24px;
-    border-radius: 100px;
-    flex-basis: 100%;
-  }
-  
-  #ins {
-    font-size: 50px;
-    line-height: 50px;
-    color: #aaa;
-    flex-basis: 80%;
-    width: 100%;
-  }
-  
-  input[type=text] {
-    width: 90%;
-    display: flex;
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    font-size: 42px;
-  }
-  
-  #container input[type=text]:focus {
-    transition: all 0.7s ease;
-    background-color: #28466b52;
-  }
-
-  
   footer {
     background-color: #28466B;
     padding: 25px;
@@ -203,11 +165,6 @@
       background-color: #ddd;
       color: black;
     }
-
-    .active {
-      background-color: #ffffff;
-      color: white;
-    }
   
     .titolo {
       font-size: 125px;
@@ -217,7 +174,7 @@
   
     footer {
       padding: 10px;
-    font-size: 2em;
+      font-size: 2em;
       margin-bottom: 0px;
     }
 } 
