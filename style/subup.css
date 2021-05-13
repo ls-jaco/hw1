@@ -49,11 +49,11 @@
     align-items: center;
     z-index: 2;
   }
-
+  
   .mobile__nav {
     display: none;
   }
-
+  
   #logo {
     height: 50px;
     width: 200px;
@@ -68,16 +68,16 @@
     right: 0;
     background-color: rgba(0, 0, 0, 0.3);
   }
-
+  
   .nav-link {
     color:white;
   }
-
+  
   #links a {  
     margin: 15px;
   }
   
-  section {
+    section {
     max-width: none;
     margin: 0 auto;
     display: flex;
@@ -89,53 +89,68 @@
     width: 100%;
     font-family: 'Open Sans', sans-serif;
     padding-bottom: 150px;
+  }
   
-  }
-
-
-  #ricerca {
-    margin: 150px 0 150px 0;
-  }
-
-  #container {
-    height: 80px;
-    box-sizing: border-box;
-    box-shadow: 0 0 10px #cecece;
-    max-width: 640px;
-    background: white;
-    justify-content: flex-start;
+  .input_container {
     display: flex;
-    padding-left: 40px;
-    align-items: center;
-    line-height: 24px;
-    border-radius: 100px;
-    flex-basis: 100%;
+    width: 300px;
+    margin-bottom: 5px;
   }
   
-  #ins {
-    font-size: 50px;
-    line-height: 50px;
-    color: #aaa;
-    flex-basis: 80%;
+  .material-icons {
+    padding: 10px;
+    background: #28466bc7;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+  }
+  
+  .input_field {
+    font-family: 'Open Sans', sans-serif;
     width: 100%;
+    padding: 10px;
+    outline: none;
+    position: relative;
   }
   
-  input[type=text] {
-    width: 90%;
-    display: flex;
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    font-size: 42px;
+  #showPassword:hover {
+    cursor: pointer;
   }
   
-  #container input[type=text]:focus {
-    transition: all 0.7s ease;
-    background-color: #28466b52;
+  #togglePassword {
+    position: absolute;
+    margin-left: 270px;
+    cursor: pointer;
+    margin-top: 15px;
   }
-
+  
+  #toggleConfirmPassword{
+    position: absolute;
+    margin-left: 270px;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+  
+  .input_field:focus {
+    border: 2px solid #28466bc7;
+  }
+  
+  .btn {
+    background-color: #28466bc7;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .btn:hover {
+    opacity: 1;
+  }
   
   footer {
-    background-color: #28466B;
+    background-color: #28466bc7;
     padding: 25px;
     text-align: center;
     color: white;
@@ -175,19 +190,19 @@
     align-items: center;
     z-index: 2;
   }
-
+  
     .nav-link {
       display: none;
     }
-
+  
     .mobile__nav {
       display: block;
     }
-
+  
     #mobile__links {
       display: none;
     }
-
+  
     .mobile__nav a {
       color: white;
       padding: 14px 16px;
@@ -195,19 +210,19 @@
       font-size: 17px;
       display: block;
     }
-
+  
     .mobile__nav a.icon__nav {
       display: block;
       font-size: 24px;
       cursor:pointer;
       box-shadow: 0 0 10px #000000;
     }
-
+  
     .mobile__nav a:hover {
       background-color: #ddd;
       color: black;
     }
-
+  
     .active {
       background-color: #ffffff;
       color: white;
@@ -224,4 +239,4 @@
     font-size: 2em;
       margin-bottom: 0px;
     }
-} 
+  } 

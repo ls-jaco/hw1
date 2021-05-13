@@ -1,5 +1,5 @@
 <?php
-    require_once "dbconfiguration.php";
+    require_once "dbconfig.php";
     require_once "session.php";
 
     $error ='';
@@ -48,15 +48,14 @@
         if(empty($error)) {
             $insertdb = "INSERT INTO users (nome, cognome, cf, data_nascita, email, password) VALUES ('$nome', '$cognome', '$codice_fiscale', '$data_nascita', '$email', '$password_encrypt')";
             $result = mysqli_query($db, $insertdb);
-            echo "<p>$insertdb</p>";
-            if ($result) {
+
+            if($result) {
                 $error .= '<p class = "success"> Registrazione avvenuto con successo!</p>';
             }
             else {
-                $error .= '<p class = "success"> Qualcosa è andato storto!</p>';
+                $error .= '<p> Qualcosa è andato storto!</p>';
             }
         }
-
         mysqli_close($db);
     }
 ?>
@@ -68,7 +67,14 @@
         <meta charset="UTF-8" />
         <title>Sign Up</title>
         <link rel="stylesheet" href="../style/signup.css"/>
+        
+        
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chango&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
         <script src='../scripts/signup.js' type="text/javascript" defer></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     </head>
 
     <body>
@@ -82,7 +88,7 @@
         <div id="links">
           <a class="nav-link" href="./home.php">HOME</a>
           <a class="nav-link">TRANSCRIPTIONS</a>
-          <a class="nav-link">SUBSCRIBE</a>
+          <a class="nav-link" href="./sub.php">SUBSCRIBE</a>
           <a class="nav-link" href="./login.php">LOGIN</a>
         </div>
 
@@ -108,19 +114,20 @@
 
     <section>
     <div class="signup_container">
-            <h2>SIGN UP</h2>
+            <h2>SIGN UP!</h2>
             <p>Iscriviti, è gratis!</p>
 
-            <form action="" method="post">
+            <form action="" method="post" >
 
-                <div class="form_class">
-                    <label>Nome</label>
+                <div class="input_container">
+                    <i class="material-icons"> badge </i>
                     <input
                         type="text"
+                        placeholder="Nome"
                         name="nome"
                         id="nome"
                         text-transform="capitalize"
-                        class="form_control"
+                        class="input_field"
                         required>
                     <script>
                         document.getElementById("nome").addEventListener("keypress", function(e) {
@@ -131,13 +138,14 @@
                         }, false);
                     </script>
                 </div>
-                <div class="form_class">
-                    <label>Cognome</label>
+                <div class="input_container">
+                    <i class="material-icons"> badge </i>
                     <input
                         type="text"
+                        placeholder="Cognome"
                         name="cognome"
                         id="cognome"
-                        class="form_control"
+                        class="input_field"
                         required>
                     <script>
                         document.getElementById("cognome").addEventListener("keypress", function(e) {
@@ -148,34 +156,63 @@
                         }, false);
                     </script>
                 </div>
-                <div class="form_class">
-                    <label>Email</label>
-                    <input type="email" name="email" class="form_control" required>
+                <div class="input_container">
+                    <i class="material-icons"> alternate_email </i>
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        name="email"
+                        class="input_field"
+                        required>
                 </div>
-                <div class="form_class">
-                    <label>Codice Fiscale</label>
+                <div class="input_container">
+                    <i class="material-icons"> code </i>
                     <input
                         type="text" 
+                        placeholder="Codice fiscale"
                         name="cf"
                         id="cf"
                         maxlength="16"
-                        class="form_control"
+                        class="input_field"
                         required
                         onkeyup="MakeMeUpper(this)">
                 </div>
-                <div class="form_class">
-                    <label>Data di nascita</label>
-                    <input type="date" name="data_nascita" class="form_control" required>
+                <div class="input_container">
+                    <i class="material-icons"> event </i>
+                    <input 
+                        type="text"
+                        placeholder="Data di nascita"
+                        onfocus="(this.type='date')"
+                        name="data_nascita"
+                        class="input_field"
+                        required>
                 </div>
-                <div class="form_class">
-                    <label>Password</label>
-                    <input type="password" maxlength="16" name="password" class="form_control" required>
+                <div class="input_container">
+                    <i class="material-icons"> lock </i>
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        id="password"
+                        maxlength="16"
+                        name="password"
+                        class="input_field"
+                        required>
+                    <i class="far fa-eye" id="togglePassword"></i>
+                    </div>
+                <div class="input_container">
+                    <i class="material-icons"> lock </i>
+                    <input
+                        type="password"
+                        placeholder="Conferma password"
+                        id="confirm_password"
+                        maxlength="16"
+                        name="confirm_password"
+                        class="input_field"
+                        required>
+                    <i class="far fa-eye" id="toggleConfirmPassword"></i>
                 </div>
-                <div class="form_class">
-                    <label>Confirm Password</label>
-                    <input type="password" maxlength="16" name="confirm_password" class="form_control" required>
-                </div>
-                <div class="form_class">
+                
+                <div class="input_container">
                     <input type="submit" name="submit" class="btn" value="Submit">
                 </div>
 
@@ -186,6 +223,8 @@
                 <p>Hai già un account? Effettua il <a href="login.php">login</a>!</p>
             </form>
         </div>
+
+        
 
     </section>
 

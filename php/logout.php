@@ -1,8 +1,9 @@
 <?php
-    session_start();
+    include 'dbconfig.php';
 
-    if(session_destroy()) {
-        header: "Location: login.php";
-        exit;
-    }
+    // Distruggo la sessione esistente
+    session_start();
+    session_destroy();
+
+    header('Location: login.php');
 ?>

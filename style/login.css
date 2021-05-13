@@ -1,180 +1,207 @@
 *{
-    box-sizing: border-box;
-    margin: 0px 0px;
-    padding: 0;
-    cursor: default;
-    font-family: "Bebas Neue", sans-serif;
-  }
-  
-  a {
-    cursor: pointer;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    color: black;
-  }
-  
+  box-sizing: border-box;
+  margin: 0px 0px;
+  padding: 0;
+  cursor: default;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+}
+
+header {
+  background-image: url(../img/miles.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 600px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.titolo {
+  color: white;
+  font-size: 150px;
+  letter-spacing: 4px;
+  margin-right: 60px;
+}
+
+.nav {
+  background-color: #28466bc7;
+  position: fixed;
+  color: white;
+  display: flex;
+  padding: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size:30px;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.mobile__nav {
+  display: none;
+}
+
+#logo {
+  height: 50px;
+  width: 200px;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.nav-link {
+  color:white;
+}
+
+#links a {  
+  margin: 15px;
+}
+
+section {
+  max-width: none;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 220px;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  padding-bottom: 150px;
+
+}
+
+
+#ricerca {
+  margin: 150px 0 150px 0;
+}
+
+#container {
+  height: 80px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px #cecece;
+  max-width: 640px;
+  background: white;
+  justify-content: flex-start;
+  display: flex;
+  padding-left: 40px;
+  align-items: center;
+  line-height: 24px;
+  border-radius: 100px;
+  flex-basis: 100%;
+}
+
+
+
+footer {
+  background-color: #28466B;
+  padding: 25px;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  letter-spacing: 2px;
+  word-spacing: 4px;
+}
+
+@media (max-width: 750px) {
+
   header {
-    background-image: url(../img/miles.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 600px;
-    position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-  }
-  
-  .titolo {
-    color: white;
-    font-size: 150px;
-    letter-spacing: 4px;
-    margin-right: 60px;
-  }
-  
-  .nav {
-    background-color: #28466bc7;
-    position: fixed;
-    color: white;
-    display: flex;
-    padding: none;
-    top: 0;
-    left: 0;
-    right: 0;
-    font-size:30px;
-    justify-content: space-between;
+    width: 100%;
     align-items: center;
-    z-index: 2;
   }
 
-  .nav-link {
-      color: white;
-  }
-
-  .mobile__nav {
-    display: none;
+  header h1 strong {
+    font-size: 0.3em;
+    letter-spacing: 2px;
   }
 
   #logo {
-    height: 50px;
-    width: 200px;
-  }
-  
-  header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+      font-size: 1em;
   }
 
-  #links a {
-    margin: 15px;
-  }
-  
-  section {
-    max-width: none;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 220px;
-    width: 100%;
-    font-family: 'Open Sans', sans-serif;
-    padding-bottom: 150px;
+.nav {
+  background-color: #28466bc7;
+  position: fixed;
+  color: white;
+  display: flex;
+  padding: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size:30px;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+  .nav-link {
+    display: none;
   }
 
+  .mobile__nav {
+    display: block;
+  }
+
+  #mobile__links {
+    display: none;
+  }
+
+  .mobile__nav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+
+  .mobile__nav a.icon__nav {
+    display: block;
+    font-size: 24px;
+    cursor:pointer;
+    box-shadow: 0 0 10px #000000;
+  }
+
+  .mobile__nav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .active {
+    background-color: #ffffff;
+    color: white;
+  }
+
+  .titolo {
+    font-size: 125px;
+    top: 30%;
+    margin-right: 0px;
+  }
 
   footer {
-    background-color: #28466B;
-    padding: 25px;
-    text-align: center;
-    color: white;
-    font-size: 30px;
-    letter-spacing: 2px;
-    word-spacing: 4px;
+    padding: 10px;
+  font-size: 2em;
+    margin-bottom: 0px;
   }
-  
-  @media (max-width: 750px) {
-  
-    header {
-      display: flex;
-      width: 100%;
-      align-items: center;
-    }
-  
-    header h1 strong {
-      font-size: 0.3em;
-      letter-spacing: 2px;
-    }
-  
-    #logo {
-        font-size: 1em;
-    }
-  
-  .nav {
-    background-color: #28466bc7;
-    position: fixed;
-    color: white;
-    display: flex;
-    padding: none;
-    top: 0;
-    left: 0;
-    right: 0;
-    font-size:30px;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 2;
-  }
-
-    .nav-link {
-      display: none;
-    }
-
-    .mobile__nav {
-      display: block;
-    }
-
-    #mobile__links {
-      display: none;
-    }
-
-    .mobile__nav a {
-      color: white;
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: 17px;
-      display: block;
-    }
-
-    .mobile__nav a.icon__nav {
-      display: block;
-      font-size: 24px;
-      cursor:pointer;
-      box-shadow: 0 0 10px #000000;
-    }
-
-    .mobile__nav a:hover {
-      background-color: #ddd;
-      color: black;
-    }
-  
-    .titolo {
-      font-size: 125px;
-      top: 30%;
-      margin-right: 0px;
-    }
-  
-    footer {
-      padding: 10px;
-      font-size: 2em;
-      margin-bottom: 0px;
-    }
 } 

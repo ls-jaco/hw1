@@ -1,10 +1,13 @@
 <?php
-session_start();
+    require_once 'auth.php';
 
-// if (!isset($_SESSION["userid"]) || $_SESSION["userid"] !== true) {
-//   header("location: login.php");
-// }
+    if(isset($_SESSION['user'])){
+      $query = "SELECT nome FROM users WHERE email= '".$_SESSION['user']."'";
+      $result = mysqli_query($db, $query);
+      $row = mysqli_fetch_array($result);
+   }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,9 +43,20 @@ session_start();
         <img id="logo" src="../img/logo.png" />
         <div id="links">
           <a class="nav-link" href="./home.php">HOME</a>
-          <a class="nav-link">TRANSCRIPTIONS</a>
-          <a class="nav-link">SUBSCRIBE</a>
-          <a class="nav-link" href="./login.php">LOGIN</a>
+          <a class="nav-link" href="./login.php">TRANSCRIPTIONS</a>
+          <a class="nav-link" href="./subup.php">SUBSCRIBE</a>
+          
+          <?php if(!isset($_SESSION['user'])) :?>
+          <a class="nav-link" href="./userpage.php">LOGIN</a>
+          <?php
+            else :
+            {
+              $userpage = "./userpage.php";
+              echo "<a class= 'nav-link' href='$userpage'> ". $row['nome']." </a>";
+            }
+            endif;
+            ?>
+
         </div>
 
 
@@ -75,13 +89,11 @@ session_start();
       </div>
 
       <div class="contenuti">
-        <div id="b1">at.jpg" />
           <button class="link-button">Transcription</button>
           <p>Controlla la lista delle trascrizioni</p>
           <img src="" />
         </div>
         <div id="b2">
-          <img src="img/abd.jpg" />
           <button class="link-button">Subscribe</button>
           <p>Iscriviti al nostro sito per restare sempre aggiornato!</p>
         </div>
@@ -97,3 +109,4 @@ session_start();
     </footer>
   </body>
 </html>
+<?php mysqli_close($conn); ?>

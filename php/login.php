@@ -1,5 +1,5 @@
 <?php
-    require_once "dbconfiguration.php";
+    require_once "dbconfig.php";
     require_once "session.php";
 
     $error = '';
@@ -8,7 +8,7 @@
 
         $email = trim($_POST['email']);
         $password = trim($_POST['password']);
-        // $password_encrypt = md5($password);
+        $password_encrypt = md5($password);
 
         if(empty($email)) {
             $error .= '<p class = "error" Immettere un email! <!p>';
@@ -18,32 +18,19 @@
             $error .= '<p class = "error" Immettere una password! <!p>';
         }
 
-        // if(empty($error)) {
-        //     $sqlselect = "SELECT * FROM users WHERE email = '$email'";
-        // }
-
         if(empty($error)) {
-            if($query = $db -> prepare("SELECT * FROM users WHERE email = ?")) {
-                $query -> bind_param('s', $email);
-                $query->execute();
-                $row = $query -> fetch();
-                if($row) {
-                    if(password_verify($password, $row['password'])) {
-                        $_SESSION["email"] = $row["email"];
-                        $_SESSION["email"] = $row;
-
-                        //Redirect to home
-                        header("location: home.php");
-                        exit;
-                    }
-                    else {
-                        $error .= '<p class="error"> Password non valida. Riprovare.</p>';
-                    }
-                }else {
-                    $error .= '<p class="error"> Non esiste alcun utente con questa email</p>';
-                }
+            $query = "SELECT * FROM users WHERE email = '$email' AND password ='$password_encrypt'";
+            $result = mysqli_query($db, $query);
+            $countResult = mysqli_num_rows($result);
+            if($countResult == 1){
+                session_start();
+                $_SESSION['user'] = $email;
+                header('Location: home.php');
+                exit;
             }
-            $query -> close; 
+            else{
+                $error .= '<p class="error"> Email o Password errati. Riprovare.</p>';
+                }
         }
         mysqli_close($db);
     }
@@ -56,6 +43,9 @@
         <meta charset="UTF-8" />
         <title>Login</title>
         <link  rel="stylesheet" href="../style/login.css"> 
+
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chango&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
     </head>
 
     <body>
@@ -69,7 +59,7 @@
         <div id="links">
           <a class="nav-link" href="./home.php">HOME</a>
           <a class="nav-link">TRANSCRIPTIONS</a>
-          <a class="nav-link">SUBSCRIBE</a>
+          <a class="nav-link" href="./subup.php">SUBSCRIBE</a>
           <a class="nav-link" href="./login.php">LOGIN</a>
         </div>
 
@@ -115,6 +105,7 @@
                 ?>
 
                 <p>Non hai un account? <a href="signup.php">Registrati</a>!</p>
+                
 
             </form>
         </div>

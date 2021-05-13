@@ -20,3 +20,20 @@ function MakeMeUpper(e){
     }   
 }
 
+
+const togglePassword = document.querySelector('#togglePassword');
+const password = document.querySelector('#password');
+
+togglePassword.addEventListener('click', function (e) {
+  const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+  password.setAttribute('type', type);
+  this.classList.toggle('fa-eye-slash');
+});
+
+const toggleConfirmPassword = document.querySelector('#toggleConfirmPassword');
+const confirm_password = document.querySelector('#confirm_password');
+toggleConfirmPassword.addEventListener('click', function (e) {
+  const type = confirm_password.getAttribute('type') === 'password' ? 'text' : 'password';
+  confirm_password.setAttribute('type', type);
+  this.classList.toggle('fa-eye-slash');
+});
