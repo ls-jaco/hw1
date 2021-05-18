@@ -58,7 +58,7 @@
         <img id="logo" src="../img/logo.png" />
         <div id="links">
           <a class="nav-link" href="./home.php">HOME</a>
-          <a class="nav-link">TRANSCRIPTIONS</a>
+          <a class="nav-link" href="./transcriptions.php">TRANSCRIPTIONS</a>
           <a class="nav-link" href="./subup.php">SUBSCRIBE</a>
           <a class="nav-link" href="./login.php">LOGIN</a>
         </div>

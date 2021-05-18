@@ -60,7 +60,7 @@ use function PHPSTORM_META\map;
         <img id="logo" src="../img/logo.png" />
         <div id="links">
           <a class="nav-link" href="./home.php">HOME</a>
-          <a class="nav-link">TRANSCRIPTIONS</a>
+          <a class="nav-link" href="./transcriptions.php">TRANSCRIPTIONS</a>
           <a class="nav-link" href="./subup.php">SUBSCRIBE</a>
           <?php if(!isset($_SESSION['user'])) :?>
           <a class="nav-link" href="./login.php">LOGIN</a>
@@ -118,11 +118,25 @@ use function PHPSTORM_META\map;
             <h2>SUBSCRIBE!</h2>
             <p>Abbonati, è conveniente!</p>
 
+            <form action="" method="post">
+              <?php
 
-            <?php
-            foreach($paymentresult as $creditcard)
-              echo  "<p>". $creditcard['n_carta'] ."</p>";
-            ?>
+                foreach($paymentresult as $creditcard)
+                echo '<div class="input_container">
+                      <input type="radio" class="input_check" name="creditcard" value='.$creditcard["n_carta"].' required"> '.$creditcard['n_carta'].'</input>
+                      </div>';
+              ?>
+
+
+              <div class="input_container">
+                      <input type="submit" name="submit" class="btn" value="Submit">
+              </div>
+
+              <?php
+                echo "$error";
+              ?>
+
+            </form>
 
             <p>Registra un altro<a href="payment.php"> metodo di pagamento</a>.</p>
 

@@ -59,7 +59,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>Sign Up</title>
-        <link rel="stylesheet" href="../style/subup.css"/>
+        <link rel="stylesheet" href="../style/payment.css"/>
         
         
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chango&display=swap" rel="stylesheet" />
@@ -79,7 +79,7 @@
         <img id="logo" src="../img/logo.png" />
         <div id="links">
           <a class="nav-link" href="./home.php">HOME</a>
-          <a class="nav-link">TRANSCRIPTIONS</a>
+          <a class="nav-link" href="./transcriptions.php">TRANSCRIPTIONS</a>
           <a class="nav-link" href="./subup.php">SUBSCRIBE</a>
           <?php if(!isset($_SESSION['user'])) :?>
           <a class="nav-link" href="./login.php">LOGIN</a>

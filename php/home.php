@@ -43,7 +43,7 @@
         <img id="logo" src="../img/logo.png" />
         <div id="links">
           <a class="nav-link" href="./home.php">HOME</a>
-          <a class="nav-link" href="./login.php">TRANSCRIPTIONS</a>
+          <a class="nav-link" href="./transcriptions.php">TRANSCRIPTIONS</a>
           <a class="nav-link" href="./subup.php">SUBSCRIBE</a>
           
           <?php if(!isset($_SESSION['user'])) :?>
@@ -81,12 +81,6 @@
 
     <section>
 
-
-      <div id="ricerca">
-        <div id="container">
-          <input type="text" id="searchbar" placeholder="Search...">
-        </div>
-      </div>
 
       <div class="contenuti">
           <button class="link-button">Transcription</button>

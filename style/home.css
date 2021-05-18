@@ -93,46 +93,7 @@
   }
 
 
-  #ricerca {
-    margin: 150px 0 150px 0;
-  }
-
-  #container {
-    height: 80px;
-    box-sizing: border-box;
-    box-shadow: 0 0 10px #cecece;
-    max-width: 640px;
-    background: white;
-    justify-content: flex-start;
-    display: flex;
-    padding-left: 40px;
-    align-items: center;
-    line-height: 24px;
-    border-radius: 100px;
-    flex-basis: 100%;
-  }
   
-  #ins {
-    font-size: 50px;
-    line-height: 50px;
-    color: #aaa;
-    flex-basis: 80%;
-    width: 100%;
-  }
-  
-  input[type=text] {
-    width: 90%;
-    display: flex;
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    font-size: 42px;
-  }
-  
-  #container input[type=text]:focus {
-    transition: all 0.7s ease;
-    background-color: #28466b52;
-  }
-
   
   footer {
     background-color: #28466B;
