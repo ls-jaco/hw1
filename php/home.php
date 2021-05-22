@@ -83,12 +83,14 @@
 
 
       <div class="contenuti">
-          <button class="link-button">Transcription</button>
+       <div class="blocco">
+          <img src="../img/abd.jpg" />
+          <input class="link-button" type="button" onclick = "location.href ='./transcriptions.php'" value="Transcriptions" />
           <p>Controlla la lista delle trascrizioni</p>
-          <img src="" />
         </div>
-        <div id="b2">
-          <button class="link-button">Subscribe</button>
+        <div class="blocco">
+          <img src="../img/lat.jpg" />
+          <input class="link-button" type="button" onclick = "location.href ='./subup.php'" value="Subscribe" />
           <p>Iscriviti al nostro sito per restare sempre aggiornato!</p>
         </div>
       </div>

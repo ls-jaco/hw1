@@ -109,8 +109,14 @@
         header("Content-length: ".strlen($filedata));
         header("Content-type: application/pdf");
         header("Content-disposition: download; filename = $filename");
-        echo $filedata; 
+        echo $filedata;
       }
+
+      echo $id;
+      echo  $filename;
+      echo $download_query;
+      echo $download_result;
+      echo $download_fetch;
     }
 
     // }
@@ -153,8 +159,7 @@
         <meta charset="UTF-8" />
         <title>Sign Up</title>
         <link rel="stylesheet" href="../style/transcriptions.css"/>
-        
-        
+        <script src='../scripts/transcriptions.js' type="text/javascript" defer></script>
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chango&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -211,17 +216,19 @@
       if(isset($_SESSION['user'])) : 
     ?>
     
+
+
+      <div class = "table_container">
+
       <div id="ricerca">
         <div id="container">
-          <input type="text" id="searchbar" placeholder="Search...">
+          <input type="text" id="searchbar" placeholder="Search..." onkeyup="search()">
         </div>
       </div>
 
-      <div class = "table_container">
-      
-        <table>
+        <table id=table>
         
-          <tr>
+          <tr class="header">
             <th>Titolo</th>
             <th>Album</th>
             <th>Strumento</th>
@@ -231,13 +238,12 @@
 
             <?php
 
-
               foreach($solos_result as $solos_fetch) {
 
                 echo '<tr>';
-                echo '<td> '.$solos_fetch['titolo_traccia'].'</td>';
-                echo '<td> '.$solos_fetch['album'].'</td>';
-                echo '<td> '.$solos_fetch['strumento'].'</td>';
+                echo '<td  id="livesearch" >'.$solos_fetch['titolo_traccia'].'</td>';
+                echo '<td>'.$solos_fetch['album'].'</td>';
+                echo '<td>'.$solos_fetch['strumento'].'</td>';
                 echo '<td>' .$url.'</td>';
                 echo '<td> 
                         <form action = "'.$_SERVER['PHP_SELF'].'" method = "POST">
