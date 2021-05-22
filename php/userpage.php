@@ -9,6 +9,10 @@
         $result = mysqli_query($db, $query);
         $row = mysqli_fetch_array($result);
      }
+    
+    $user = "SELECT * FROM users WHERE email = '".$_SESSION['user']."'";     
+    $user_result = mysqli_query($db, $user);
+    $user_fetch = mysqli_fetch_assoc($user_result);
 ?>
 
 
@@ -74,6 +78,14 @@
 
     <section>
     
+    <?php
+    echo '<p>Utente: '. $user_fetch['nome'].' '. $user_fetch['cognome'].' </p>'; 
+    echo '<p>Account: '. $user_fetch['tipo'].' Giorni rimanenti: </p>';
+    echo '<a href="">Downloads</a>';
+    echo '<a href="changepassword-php">Modifica password</a>';
+    echo '<p>Modifica metodi di pagamento</p>';
+    echo '<p>Disdici abbonamento</p>'
+    ?>
     <a href="./logout.php">Logout</a>
 
     </section>

@@ -6,6 +6,8 @@ use function PHPSTORM_META\map;
     require_once "session.php";
 
     $error = '';
+    $date = date('Y-m-d');
+
 
     if(isset($_SESSION['user'])){
       $query = "SELECT nome FROM users WHERE email = '".$_SESSION['user']."'";     
@@ -17,20 +19,49 @@ use function PHPSTORM_META\map;
       $user = "SELECT * FROM users WHERE email = '".$_SESSION['user']."'";     
       $user_result = mysqli_query($db, $user);
       $user_row = mysqli_fetch_assoc($user_result);
-   }
+    }
     
-    if(isset($_SESSION['user'])){
-      $payment = "SELECT * FROM metodipagamento WHERE cf_utente = '".$user_row['cf']."'";
-      $paymentresult = mysqli_query($db, $payment);
-      $paymentrow = mysqli_num_rows($paymentresult);
-      if($paymentrow != 0){
-      $checkresult = true;
+    $payment = "SELECT * FROM metodipagamento WHERE cf_utente = '".$user_row['cf']."'";
+    $paymentresult = mysqli_query($db, $payment);
+    $paymentrow = mysqli_num_rows($paymentresult);
+
+    if($paymentrow != 0){
+    $checkresult = true;
+    }
+    else $checkresult = false;
+    
+    $abbonamento_query = "SELECT stato FROM abbonamenti WHERE cf_utente = '".$user_row['cf']."'";
+    $abbonamento_result = mysqli_query($db, $abbonamento_query);
+    $abbonamento_fetch = mysqli_fetch_assoc($abbonamento_result);
+
+    foreach($abbonamento_result as $abbonamento_fetch){
+      if($abbonamento_result == "Attivo"){
+        $error .= "Hai già un abbonamento attivo!";
       }
-      else $checkresult = false;
     }
 
     if($checkresult == true) {
       $creditcard = mysqli_fetch_assoc($paymentresult);
+    }
+
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+
+      $cf = $user_row["cf"];
+      $credit_card = trim($_POST['creditcard']);
+
+
+      if(empty($error)){
+        $insert_sub = "INSERT INTO abbonamenti (data_inizio, cf_utente , n_carta) VALUES ('$date', '$cf', '$credit_card')";
+        $insert_result = mysqli_query($db, $insert_sub);
+
+        if($insert_result) {
+          $error .=  '<p>Ti sei abbonato con successo!</p>';
+        }else{
+          echo $error;
+        }
+
+      }
+      mysqli_close($db);
     }
 ?>
 
@@ -133,7 +164,7 @@ use function PHPSTORM_META\map;
               </div>
 
               <?php
-                echo "$error";
+                echo $error;
               ?>
 
             </form>
@@ -141,9 +172,10 @@ use function PHPSTORM_META\map;
             <p>Registra un altro<a href="payment.php"> metodo di pagamento</a>.</p>
 
 
-                <?php
-                echo "$error";
-                ?>
+                <!-- <?php
+                echo $insert_sub;
+                echo $abbonamento_query;
+                ?> -->
             </form>
         </div>
 
