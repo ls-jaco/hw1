@@ -46,6 +46,10 @@
 
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chango&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+        <script src='../scripts/signup.js' type="text/javascript" defer></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     </head>
 
     <body>
@@ -72,16 +76,16 @@
             <h2>Login</h2>
 
             <form action="" method="post">
-                <div class="form_class">
-                    <label>Email</label>
-                    <input type="email" name="email" class ="form_control" required>
+                <div class="input_container">
+                    <i class="material-icons"> email </i>
+                    <input placeholder="Email" type="email" name="email" class ="input_field" required>
                 </div>
-                <div class="form_class">
-                    <label>Password</label>
-                    <input type="password" name="password" class ="form_control" required>
+                <div class="input_container">
+                    <i class="material-icons"> lock </i>
+                    <input placeholder="Password" type="password" name="password" class ="input_field" required>
                 </div>
-                <div class="form_class">
-                    <input type="submit" name="submit" class ="btn" value="submit">
+                <div class="input_container">
+                    <input type="submit" name="submit" class="btn" value="Submit">
                 </div>
 
                 <?php

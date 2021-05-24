@@ -9,11 +9,13 @@
   a {
     cursor: pointer;
     text-decoration: none;
+    color: #28466bc7;
   }
   
   a:hover {
-    color: black;
+    color: #12417ab0;
   }
+
   
   header {
     background-image: url(../img/miles.jpg);
@@ -87,7 +89,7 @@
     align-items: center;
     min-height: 220px;
     width: 100%;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Bebas Neue", sans-serif;
     padding-bottom: 150px;
     padding-top: 150px;
   }
@@ -98,7 +100,7 @@
     width: 200px;
     margin-bottom: 10px;
     align-items: center;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Bebas Neue", sans-serif;
   }
   
   .input_check {
@@ -128,6 +130,7 @@
   .btn:hover {
     opacity: 1;
   }
+
   footer {
     background-color: #28466bc7;
     padding: 25px;

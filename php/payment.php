@@ -63,7 +63,7 @@
         
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chango&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
-        <!-- <script src='../scripts/signup.js' type="text/javascript" defer></script> -->
+        <script src='../scripts/signup.js' type="text/javascript" defer></script>   
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     </head>
@@ -110,7 +110,7 @@
         
     <div class="sub_container">
             <h2>SUBSCRIBE!</h2>
-            <p>Abbonati, è conveniente!</p>
+            <p>Aggiungi un metodo di pagamento</p>
 
             <form action="" method="post">
 

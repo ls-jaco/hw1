@@ -6,6 +6,11 @@
     font-family: "Bebas Neue", sans-serif;
   }
   
+  body.waiting * {
+    cursor: progress;
+}
+
+
   a {
     cursor: pointer;
     text-decoration: none;

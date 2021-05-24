@@ -9,6 +9,7 @@
 a {
   cursor: pointer;
   text-decoration: none;
+  color: #28466bc7
 }
 
 a:hover {
@@ -50,10 +51,6 @@ header {
   z-index: 2;
 }
 
-.mobile__nav {
-  display: none;
-}
-
 #logo {
   height: 50px;
   width: 200px;
@@ -75,11 +72,11 @@ header::before {
 
 #links a {  
   margin: 15px;
+
 }
 
 section {
   max-width: none;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -89,24 +86,45 @@ section {
   width: 100%;
   font-family: 'Open Sans', sans-serif;
   padding-bottom: 150px;
-
+  padding-top: 150px;
 }
 
-#container {
-  height: 80px;
-  box-sizing: border-box;
-  box-shadow: 0 0 10px #cecece;
-  max-width: 640px;
-  background: white;
-  justify-content: flex-start;
+.input_container {
   display: flex;
-  padding-left: 40px;
-  align-items: center;
-  line-height: 24px;
-  border-radius: 100px;
-  flex-basis: 100%;
+  width: 300px;
+  margin-bottom: 5px;
 }
 
+.material-icons {
+  padding: 10px;
+  background: #28466bc7;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.input_field {
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  position: relative;
+}
+
+
+.btn {
+  background-color: #28466bc7;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
 
 
 footer {

@@ -5,6 +5,7 @@
     // Impostiamo l'header della risposta
     //header('Content-Type: application/json');
 
+    
     if(isset($_SESSION['user'])){
       $query = "SELECT nome FROM users WHERE email= '".$_SESSION['user']."'";     
       $result = mysqli_query($db, $query);
@@ -115,7 +116,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chango&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+      rel="stylesheet"
+      >
+
     </head>
 
     <body>

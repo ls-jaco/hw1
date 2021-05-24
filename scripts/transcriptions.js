@@ -18,6 +18,8 @@ function search() {
     }
 }
 
+$('body').addClass('waiting');
+$('body').removeClass('waiting');
 
 // let button = document.getElementById('download') 
 
