@@ -17,3 +17,28 @@ function search() {
       }
     }
 }
+
+
+// let button = document.getElementById('download') 
+
+// button.addEventListener('click', function(e){
+//   let downloadVal = document.getElementById('textarea').value
+
+//   let filename = "output.pdf"
+
+//   download (downloadVal, filename)
+// })
+
+// function download(downloadVal, filename){
+//   let element = createElement('a')
+
+//   element.setAttribute('href', 'data:test/plan;charset=utf-8' + encodeURIComponent(Blob))
+
+//   element.setAttribute('downlaod', filename)
+//   element.style.display = none
+//   document.body.appendChild(element)
+//   element.click()
+//   document.body.removeChild(element)
+// }
+
+

@@ -20,19 +20,19 @@
 
         $cvv_encrypt = md5("$cvv");
 
-        // $sql_paynum = "SELECT * FROM metodipagamento WHERE n_carta = '$n_carta";
-        // $result_paynum = mysqli_query($db, $sql_paynum);
-        // $countrow_paynum = mysqli_num_rows($result_paynum);
+        $sql_paynum = "SELECT * FROM metodipagamento WHERE n_carta = '$n_carta";
+        $result_paynum = mysqli_query($db, $sql_paynum);
+        $countrow_paynum = mysqli_num_rows($result_paynum);
 
-        // $sql_payusr = "SELECT * FROM metodipagamento WHERE cf_utente = '$cf_utente";
-        // $result_payusr = mysqli_query($db, $sql_payusr);
-        // $countrow_payusr = mysqli_num_rows($result_payusr);
+        $sql_payusr = "SELECT * FROM metodipagamento WHERE cf_utente = '$cf_utente";
+        $result_payusr = mysqli_query($db, $sql_payusr);
+        $countrow_payusr = mysqli_num_rows($result_payusr);
 
-        // if(($countrownum === 1) && ($countrow_payusr === 1)) {
-        //     $error .= '<p>Questa carta è già registrata per questo utente!</p>';
-        // }
+        if(($countrownum === 1) && ($countrow_payusr === 1)) {
+            $error .= "Questa carta è già registrata per questo utente!";
+        }
 
-        //Aggiungere tutti gli errori del caso
+
 
         if(empty($error)) {
             $insertpaymemt = "INSERT INTO metodipagamento (n_carta, proprietario, CVV, data_scadenza_carta, cf_utente) VALUES ('$n_carta', '$proprietario', '$cvv_encrypt', '$data_scadenza_carta', '$cf_utente')";

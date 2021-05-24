@@ -55,7 +55,7 @@ use function PHPSTORM_META\map;
         $insert_result = mysqli_query($db, $insert_sub);
 
         if($insert_result) {
-          $error .=  '<p>Ti sei abbonato con successo!</p>';
+          $error .=  "Ti sei abbonato con successo!";
         }else{
           echo $error;
         }
@@ -168,14 +168,7 @@ use function PHPSTORM_META\map;
               ?>
 
             </form>
-
             <p>Registra un altro<a href="payment.php"> metodo di pagamento</a>.</p>
-
-
-                <!-- <?php
-                echo $insert_sub;
-                echo $abbonamento_query;
-                ?> -->
             </form>
         </div>
 

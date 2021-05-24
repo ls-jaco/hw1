@@ -14,13 +14,7 @@
     //Selezioniamo tutti gli elementi dalla tabella "solos" del database
     $solos_query = "SELECT * FROM solos";     
     $solos_result = mysqli_query($db, $solos_query);
-    $solos_fetch = mysqli_fetch_assoc($solos_result);
-
-    //Selezioniamo tutti gli elementi dalla tabella "tracce" del database
-    $tracce_query = "SELECT * FROM tracce";
-    $tracce_result = mysqli_query($db, $tracce_query);
-    $tracce_fetch = mysqli_fetch_assoc($tracce_result);
-
+    $solos_row = mysqli_num_rows($solos_result);
 
 
     $client_id = 'a3d490c5fd084afe820e482860e3c59e';
@@ -40,58 +34,40 @@
     $token=json_decode(curl_exec($ch), true);
     curl_close($ch);
 
+  
+      foreach($solos_result as $res) {
+      // var_dump($res['titolo_traccia']);
 
-    // foreach($solos_result as $solos_fetch) 
+      $title = rawurlencode($res['titolo_traccia']);
+      $encoded_title = strtolower($title);
 
-    // for($i = 0; $i< count($solos_fetch);){
-
-    //   $tracce_query = "SELECT * FROM tracce WHERE album = '".$solos_fetch['album']."'";
-    //   $tracce_result = mysqli_query($db, $tracce_query);
-    //   $tracce_fetch = mysqli_fetch_array($tracce_result);
-
-
-
-    //   $title = rawurlencode($solos_fetch['titolo_traccia']);
-    //   $encoded_title = strtolower($title);
-
-    //   //Query di ricerca
-    //   $url = 'https://api.spotify.com/v1/search?q='.$encoded_title.'&type=track&market=IT&limit=10';
-    //   $ch = curl_init();
-    //   curl_setopt($ch, CURLOPT_URL, $url);
-    //   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    //   //Impostiamo il token
-    //   curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer '.$token['access_token'])); 
-    //   $query_result = curl_exec($ch);
-    //   curl_close($ch);
-
+      //Query di ricerca
+      $url = 'https://api.spotify.com/v1/search?q='.$encoded_title.'&type=track&market=IT&limit=10';
+      $url_list[] = $url;
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      //Impostiamo il token
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer '.$token['access_token'])); 
+      $query_result = curl_exec($ch);
+      curl_close($ch);
       
-    //   $search_decode = json_decode($query_result, true);
-    //   $tracks = $search_decode["tracks"];
-    //   $items = $tracks["items"];
+      $search_decode = json_decode($query_result, true);
+      $tracks = $search_decode['tracks'];
 
-    //     for($i = 0; $i < count($items); $i++){
-    //       $iter_items = $items[$i];
-    //       $artists = $iter_items['artists'];
-    //       $album = $iter_items['album'];
-    //       $album_name = $album["name"];
+      // if(!isset($search_decode)){
+      //   $preview_url_list[$res['id_solo']] = "Not found";
+      // }
+      
+      $items = $tracks["items"];
 
-    //         for($j = 0; $j < count($artists); $j++){
-    //           $iter_artists = $artists[$j];
-    //           $artist_name = $iter_artists['name'];
-              
-    //           if(($iter_items["name"] == $solos_fetch["titolo_traccia"]) && ($album_name == $tracce_fetch['album'])){
-    //             // $prova = $iter_items['preview_url'];
-    //             $prova = $artist_name;
-    //             return $prova;
-
-    //             // var_dump($solos_fetch["titolo_traccia"]);
-    //             //  echo $tracce_fetch["album"];
-    //           }
-
-    //         }
-    //     }
-
-    //   }
+      foreach($items as $item){
+        if($item['album']['name'] == $res['album']){
+          $preview_url_list[$res['id_solo']] = $item['preview_url'] ?? "Preview non disponibile.";
+          break;
+        }
+      }
+    }
     
 
     //Download
@@ -99,53 +75,29 @@
     if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
       $id = $_POST['download'];
-      $filename = "Solo.pdf";
+      $filename = "'".$solos_result['titolo_traccia']. "'.pdf";
 
-      $download_query = "SELECT pdf FROM solos WHERE id = '".$id."'";
+      $download_query = "SELECT pdf FROM solos WHERE id_solo = '".$id."'";
       $download_result = mysqli_query($db, $download_query);
-      $download_fetch = mysqli_fetch_assoc($download_result);
+      $download_fetch = mysqli_fetch_array($download_result);
+      // var_dump($download_query);
+      // var_dump($download_result);
+      // var_dump($download_fetch);
+      // var_dump($filename);
+      // echo $download_fetch;
+      // clearstatcache();
       while($download_fetch){
-        $filedata = $download_fetch['pdf'];
+        $filedata = $_GET['pdf'];
+        header('Content-Description: File Transfer');
         header("Content-length: ".strlen($filedata));
         header("Content-type: application/pdf");
-        header("Content-disposition: download; filename = $filename");
-        echo $filedata;
+        header("Content-disposition: download; filename=$filename");
+        header('Content-Transfer-Encoding: binary');
+        readfile($filedata, true);
+        die();
       }
 
-      echo $id;
-      echo  $filename;
-      echo $download_query;
-      echo $download_result;
-      echo $download_fetch;
     }
-
-    // }
-    //Sbagliato
-  //   if (isset($_POST['download'])) {
-  //     $file = $_POST['download'];
-  //     try {
-  //       $sql = "SELECT * FROM `solos` WHERE `pdf` = '".$file."'";
-  //         $results = $sql->query($db);
-
-  //         while ($row = $results->fetch()) {
-  //             $filename = $row['filename'];
-  //             $mimetype = $row['mimetype'];
-  //             $filedata = $row['filedata'];
-  //             header("Content-length: ".strlen($filedata));
-  //             header("Content-type: $mimetype");
-  //             header("Content-disposition: download; filename=$filename"); //disposition of download forces a download
-  //             echo $filedata; 
-  //             // die();
-  //         } //of While
-  //     } //try
-  //     catch (PDOException $e) {
-  //         $error = '<br>Database ERROR fetching requested file.';
-  //         echo $error;
-  //         die();    
-  //     } //catch
-  // } //isset
-
-    
 ?>
 
 
@@ -238,20 +190,20 @@
 
             <?php
 
-              foreach($solos_result as $solos_fetch) {
+              foreach($solos_result as $index=> $res) {
 
                 echo '<tr>';
-                echo '<td  id="livesearch" >'.$solos_fetch['titolo_traccia'].'</td>';
-                echo '<td>'.$solos_fetch['album'].'</td>';
-                echo '<td>'.$solos_fetch['strumento'].'</td>';
-                echo '<td>' .$url.'</td>';
+                echo '<td  id="livesearch" >'.$res['titolo_traccia'].'</td>';
+                echo '<td>'.$res['album'].'</td>';
+                echo '<td>'.$res['strumento'].'</td>';
+                echo '<td> <audio controls>
+                      <source src = "'.$preview_url_list[$res['id_solo']].'" type="audio/mp3">
+                     </audio></td>';
                 echo '<td> 
-                        <form action = "'.$_SERVER['PHP_SELF'].'" method = "POST">
-                        <button type="submit" value= "'.$solos_fetch['id_solo'].'" name="download" class="material-icons"> download </button>
+                        <form action="'.$_SERVER['PHP_SELF'].'" method="POST">
+                        <button id="downlaod" type="submit" value= "'.$res['id_solo'].'" name="download" class="material-icons"> download </button>
                         </form>
                       </td>';
-                $error = $download_query;
-                echo $error;
                 echo '</tr>';
               }
             ?>
