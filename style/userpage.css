@@ -1,3 +1,4 @@
+
 *{
     box-sizing: border-box;
     margin: 0px 0px;
@@ -89,22 +90,47 @@
     width: 100%;
     font-family: 'Open Sans', sans-serif;
     padding-bottom: 150px;
+    padding-top: 150px;
   }
 
-  #ricerca {
-    margin: 150px 0 150px 0;
-    height: 80px;
-    box-sizing: border-box;
-    box-shadow: 0 0 10px #cecece;
-    max-width: 640px;
-    background: white;
-    justify-content: center;
-    display: flex;
+
+  body {font-family: Arial, Helvetica, sans-serif;}
+
+  .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1;
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
     align-items: center;
-    line-height: 24px;
-    border-radius: 100px;
-    flex-basis: 100%;
-    margin-left: 100px;
+  }
+
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
   }
 
   .material-icons {
@@ -115,46 +141,41 @@
     text-align: center;
   }
 
-  .material-icons:hover{
-    cursor: pointer;
+  .output_container{
+    display: flex;
+    width: 300px;
+    margin-bottom: 5px;
+
   }
 
-  table {
-    border-collapse: collapse;
+  .output_field {
+    font-family: "Bebas Neue", sans-serif;
     width: 100%;
+    padding: 10px;
+    outline: none;
+    position: relative;
+    color: black;
+  }
+
+  a.output_field:hover {
+    color:#28466bc7;
   }
   
-  th, td {
-    text-align: left;
-    padding: 8px;
-  }
   
-  tr:nth-child(even){background-color: #f2f2f2}
-  
-  th {
+  .btn {
     background-color: #28466bc7;
     color: white;
-  }
-
-  
-  input[type=text] {
-    width: 90%;
-    display: flex;
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    font-size: 42px;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
   }
   
-  #container input[type=text]:focus {
-    transition: all 0.7s ease;
-    background-color: #28466b52;
+  .btn:hover {
+    opacity: 1;
   }
-
-  form{
-    margin-left: 20px;
-  }
-
-
+  
   footer {
     background-color: #28466bc7;
     padding: 25px;
@@ -164,3 +185,4 @@
     letter-spacing: 2px;
     word-spacing: 4px;
   }
+  

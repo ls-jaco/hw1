@@ -89,17 +89,17 @@
     width: 100%;
     font-family: 'Open Sans', sans-serif;
     padding-bottom: 150px;
+    padding-top: 150px;
   }
 
   .input_container {
+    margin-top: 50px;
     display: flex;
     width: 200px;
     margin-bottom: 10px;
     align-items: center;
     font-family: 'Open Sans', sans-serif;
   }
-
-
   
   .input_check {
     margin-left: 15px;

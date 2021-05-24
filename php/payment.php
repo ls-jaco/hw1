@@ -33,7 +33,6 @@
         }
 
 
-
         if(empty($error)) {
             $insertpaymemt = "INSERT INTO metodipagamento (n_carta, proprietario, CVV, data_scadenza_carta, cf_utente) VALUES ('$n_carta', '$proprietario', '$cvv_encrypt', '$data_scadenza_carta', '$cf_utente')";
             $result = mysqli_query($db, $insertpaymemt);
@@ -92,24 +91,6 @@
             endif;
             ?>
         </div>
-
-
-        <div class="mobile__nav">
-
-          <!-- navigation links, hidden by default -->
-          <div id="mobile__links">
-            <a href="./home.php">HOME</a>
-            <a href="#">TRANSCRIPTIONS</a>
-            <a href="#">SUBSCRIBE</a>
-            <a href="./login.php">LOGIN</a>
-          </div>
-
-          <!-- Menu and Bar Icon -->
-          <a href="#" class="icon__nav" onclick="showMenu()">
-            <i class="fa fa-bars"></i>
-          </a>
-        </div>
-      </nav>
 
     </header>
 

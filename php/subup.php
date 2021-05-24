@@ -6,8 +6,16 @@ use function PHPSTORM_META\map;
     require_once "session.php";
 
     $error = '';
-    $date = date('Y-m-d');
 
+    $date = date('Y-m-d');
+    $data_scadenza = date('Y-m-d', strtotime("+60 days"));
+
+    $startTimeStamp = strtotime($date);
+    $endTimeStamp = strtotime($data_scadenza);
+
+    $timeDiff = abs($endTimeStamp - $startTimeStamp);
+    $numberDays = $timeDiff/86400;  // 86400 seconds in one day
+    $giorni_rimanenti = intval($numberDays);
 
     if(isset($_SESSION['user'])){
       $query = "SELECT nome FROM users WHERE email = '".$_SESSION['user']."'";     
@@ -34,8 +42,8 @@ use function PHPSTORM_META\map;
     $abbonamento_result = mysqli_query($db, $abbonamento_query);
     $abbonamento_fetch = mysqli_fetch_assoc($abbonamento_result);
 
-    foreach($abbonamento_result as $abbonamento_fetch){
-      if($abbonamento_result == "Attivo"){
+    foreach($abbonamento_result as $res){
+      if($res['stato'] == "Attivo"){
         $error .= "Hai già un abbonamento attivo!";
       }
     }
@@ -51,7 +59,7 @@ use function PHPSTORM_META\map;
 
 
       if(empty($error)){
-        $insert_sub = "INSERT INTO abbonamenti (data_inizio, cf_utente , n_carta) VALUES ('$date', '$cf', '$credit_card')";
+        $insert_sub = "INSERT INTO abbonamenti (data_inizio, data_scadenza, cf_utente, n_carta, stato, giorni_rimanenti) VALUES ('$date', '$data_scadenza' ,'$cf', '$credit_card', 'Attivo', $giorni_rimanenti)";
         $insert_result = mysqli_query($db, $insert_sub);
 
         if($insert_result) {
@@ -106,21 +114,6 @@ use function PHPSTORM_META\map;
         </div>
 
 
-        <div class="mobile__nav">
-
-          <!-- navigation links, hidden by default -->
-          <div id="mobile__links">
-            <a href="./home.php">HOME</a>
-            <a href="#">TRANSCRIPTIONS</a>
-            <a href="#">SUBSCRIBE</a>
-            <a href="./login.php">LOGIN</a>
-          </div>
-
-          <!-- Menu and Bar Icon -->
-          <a href="#" class="icon__nav" onclick="showMenu()">
-            <i class="fa fa-bars"></i>
-          </a>
-        </div>
       </nav>
 
     </header>
@@ -147,7 +140,6 @@ use function PHPSTORM_META\map;
     <?php elseif($checkresult == true) : ?>
 
             <h2>SUBSCRIBE!</h2>
-            <p>Abbonati, è conveniente!</p>
 
             <form action="" method="post">
               <?php
@@ -166,8 +158,6 @@ use function PHPSTORM_META\map;
               <?php
                 echo $error;
               ?>
-
-            </form>
             <p>Registra un altro<a href="payment.php"> metodo di pagamento</a>.</p>
             </form>
         </div>

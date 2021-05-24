@@ -47,9 +47,6 @@
         }
         mysqli_close($db);
     }
-
-
-
 ?>
 
 
@@ -94,24 +91,6 @@
             ?>
         </div>
 
-
-        <div class="mobile__nav">
-
-          <!-- navigation links, hidden by default -->
-          <div id="mobile__links">
-            <a href="./home.php">HOME</a>
-            <a href="#">TRANSCRIPTIONS</a>
-            <a href="#">SUBSCRIBE</a>
-            <a href="./login.php">LOGIN</a>
-          </div>
-
-          <!-- Menu and Bar Icon -->
-          <a href="#" class="icon__nav" onclick="showMenu()">
-            <i class="fa fa-bars"></i>
-          </a>
-
-
-        </div>
       </nav>
 
     </header>

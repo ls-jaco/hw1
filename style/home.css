@@ -85,25 +85,48 @@
     text-align: center;
     justify-content: space-between;
     align-items: center;
-    min-height: 220px;
-    width: 100%;
     font-family: 'Open Sans', sans-serif;
     padding-bottom: 150px;
+    padding-top: 150px;
   }
 
   .contenuti {
-    margin-top: 100px;
     display: flex;
-    align-content: center;
+    justify-content: center;
     font-size: 50px;
     flex-wrap: wrap;
-    margin: 0 auto;
   }
 
-  .blocco {
+  .blocco_contenuti {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    width: 500px;
+    height: 500px;
+    margin-bottom: 150px;
+  }
+
+  .blocco_contenuti img {
+    height: 400px;
+    width: 400px;
+    box-shadow: 0 0 10px #000000;
+    border-radius: 10px;
+  }
+  
+  .blocco_contenuti h1 {
+    text-align: center;
+    font-size: 45px;
+    text-transform: uppercase;
+  }
+  
+  .blocco_contenuti p {
+    padding-top: 30px;
+    width: 30%;
+    color: black;
+    font-size: 30px;
+    line-height: 30px;
+    margin: auto;
+    font-family: Verdana, sans-serif;
   }
 
   .link-button {
@@ -126,29 +149,6 @@
   
   .link-button:focus {
     outline: none;
-  }
-
-  .contenuti img {
-    height: 400px;
-    width: 400px;
-    box-shadow: 0 0 10px #000000;
-    border-radius: 10px;
-  }
-  
-  .contenuti h1 {
-    text-align: center;
-    font-size: 45px;
-    text-transform: uppercase;
-  }
-  
-  .contenuti p {
-    padding-top: 30px;
-    width: 30%;
-    color: black;
-    font-size: 30px;
-    line-height: 30px;
-    margin: auto;
-    font-family: Verdana, sans-serif;
   }
   
   

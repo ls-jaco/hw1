@@ -72,32 +72,32 @@
 
     //Download
 
-    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+    // if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
-      $id = $_POST['download'];
-      $filename = "'".$solos_result['titolo_traccia']. "'.pdf";
+    //   $id = $_POST['download'];
+    //   $filename = "'".$solos_result['titolo_traccia']. "'.pdf";
 
-      $download_query = "SELECT pdf FROM solos WHERE id_solo = '".$id."'";
-      $download_result = mysqli_query($db, $download_query);
-      $download_fetch = mysqli_fetch_array($download_result);
-      // var_dump($download_query);
-      // var_dump($download_result);
-      // var_dump($download_fetch);
-      // var_dump($filename);
-      // echo $download_fetch;
-      // clearstatcache();
-      while($download_fetch){
-        $filedata = $_GET['pdf'];
-        header('Content-Description: File Transfer');
-        header("Content-length: ".strlen($filedata));
-        header("Content-type: application/pdf");
-        header("Content-disposition: download; filename=$filename");
-        header('Content-Transfer-Encoding: binary');
-        readfile($filedata, true);
-        die();
-      }
+    //   $download_query = "SELECT pdf FROM solos WHERE id_solo = '".$id."'";
+    //   $download_result = mysqli_query($db, $download_query);
+    //   $download_fetch = mysqli_fetch_array($download_result);
+    //   // var_dump($download_query);
+    //   // var_dump($download_result);
+    //   // var_dump($download_fetch);
+    //   // var_dump($filename);
+    //   // echo $download_fetch;
+    //   // clearstatcache();
+    //   while($download_fetch){
+    //     $filedata = $_GET['pdf'];
+    //     header('Content-Description: File Transfer');
+    //     header("Content-length: ".strlen($filedata));
+    //     header("Content-type: application/pdf");
+    //     header("Content-disposition: download; filename=$filename");
+    //     header('Content-Transfer-Encoding: binary');
+    //     readfile($filedata, true);
+    //     die();
+    //   }
 
-    }
+    // }
 ?>
 
 
@@ -142,22 +142,6 @@
             ?>
         </div>
 
-
-        <div class="mobile__nav">
-
-          <!-- navigation links, hidden by default -->
-          <div id="mobile__links">
-            <a href="./home.php">HOME</a>
-            <a href="#">TRANSCRIPTIONS</a>
-            <a href="#">SUBSCRIBE</a>
-            <a href="./login.php">LOGIN</a>
-          </div>
-
-          <!-- Menu and Bar Icon -->
-          <a href="#" class="icon__nav" onclick="showMenu()">
-            <i class="fa fa-bars"></i>
-          </a>
-        </div>
       </nav>
 
     </header>
@@ -173,10 +157,9 @@
       <div class = "table_container">
 
       <div id="ricerca">
-        <div id="container">
           <input type="text" id="searchbar" placeholder="Search..." onkeyup="search()">
-        </div>
       </div>
+
 
         <table id=table>
         

@@ -4,6 +4,8 @@
 
     $error = '';
 
+    $date = date('Y-m-d');
+
     if(isset($_SESSION['user'])){
         $query = "SELECT nome FROM users WHERE email= '".$_SESSION['user']."'";     
         $result = mysqli_query($db, $query);
@@ -13,6 +15,31 @@
     $user = "SELECT * FROM users WHERE email = '".$_SESSION['user']."'";     
     $user_result = mysqli_query($db, $user);
     $user_fetch = mysqli_fetch_assoc($user_result);
+
+    if($user_fetch['tipo'] == "Premium"){
+      $abbonamenti_query = "SELECT * FROM abbonamenti WHERE cf_utente = '".$user_fetch['cf']."' && stato = 'Attivo'";
+      $abbonamenti_result = mysqli_query($db, $abbonamenti_query);
+      $abbonamenti_fetch = mysqli_fetch_assoc($abbonamenti_result);
+    }
+
+
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+
+      $disdici_query = "UPDATE users SET tipo = 'Standard' WHERE cf = '".$user_fetch['cf']."'";
+      $disdici_result = mysqli_query($db, $disdici_query);
+
+      $disdici_query_abb = "UPDATE abbonamenti SET stato = 'Scaduto' WHERE cf_utente = '".$user_fetch['cf']."'";
+      $disdici_result_abb = mysqli_query($db, $disdici_query_abb);
+
+      $disdici_set_data_query = "UPDATE abbonamenti SET data_scadenza = '".$date."' WHERE cf_utente = '".$user_fetch['cf']."'";
+      $disdici_set_data_result = mysqli_query($db, $disdici_set_data_query);
+
+      $disdici_giorni_query = "UPDATE abbonamenti SET giorni_rimanenti = '0' WHERE cf_utente = '".$user_fetch['cf']."'";
+      $disdici_giorni_result = mysqli_query($db, $disdici_giorni_query);
+
+      $error .= "Abbonamento disdetto con successo";
+    }
+
 ?>
 
 
@@ -23,11 +50,15 @@
     <head>
         <meta charset="UTF-8" />
         <title>Sign Up</title>
-        <link rel="stylesheet" href="../style/subup.css"/>
+        <link rel="stylesheet" href="../style/userpage.css"/>
         
-        
+        <script src='../scripts/userpage.js' type="text/javascript" defer></script>
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chango&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" /><script src='../scripts/signup.js' type="text/javascript" defer></script>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+        <script src='../scripts/signup.js' type="text/javascript" defer></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     </head>
 
     <body>
@@ -54,24 +85,6 @@
             ?>
         </div>
 
-
-        <div class="mobile__nav">
-
-          <!-- navigation links, hidden by default -->
-          <div id="mobile__links">
-            <a href="./home.php">HOME</a>
-            <a href="#">TRANSCRIPTIONS</a>
-            <a href="#">SUBSCRIBE</a>
-            <a href="./login.php">LOGIN</a>
-          </div>
-
-          <!-- Menu and Bar Icon -->
-          <a href="#" class="icon__nav" onclick="showMenu()">
-            <i class="fa fa-bars"></i>
-          </a>
-
-
-        </div>
       </nav>
 
     </header>
@@ -79,14 +92,63 @@
     <section>
     
     <?php
-    echo '<p>Utente: '. $user_fetch['nome'].' '. $user_fetch['cognome'].' </p>'; 
-    echo '<p>Account: '. $user_fetch['tipo'].' Giorni rimanenti: </p>';
-    echo '<a href="">Downloads</a>';
-    echo '<a href="changepassword-php">Modifica password</a>';
-    echo '<p>Modifica metodi di pagamento</p>';
-    echo '<p>Disdici abbonamento</p>'
+
+    echo '<div class="output_container">
+          <i class="material-icons"> account_circle </i>
+          <p class="output_field">'. $user_fetch['nome'].' '. $user_fetch['cognome'].' </p>
+          </div>';
+
+    echo '<div class="output_container">
+          <i class="material-icons"> star_rate </i>
+          <p class="output_field">Account: '. $user_fetch['tipo'].' </p>
+          </div>';
+
+    if($user_fetch['tipo'] == 'Premium'){
+    echo '<div class="output_container">
+         <i class="material-icons"> event </i>
+         <p class="output_field"> Giorni rimanenti: '. $abbonamenti_fetch['giorni_rimanenti'].' </p>
+         </div>';
+    }
+
+    echo '<div class="output_container">
+         <i class="material-icons"> download </i>
+         <a class="output_field" href="">Downloads</a>
+         </div>';
+
+    echo '<div class="output_container">
+         <i class="material-icons"> lock </i>
+         <a class="output_field" href="changepassword-php">Modifica password</a>
+         </div>';
+    // echo '<p>Modifica metodi di pagamento</p>';
+
+    if($user_fetch['tipo'] == 'Premium'){
+    echo '<div class="output_container">
+         <i class="material-icons"> delete_forever </i>
+         <a class="output_field" <button id="myBtn">Disdici abbonamento</button></a>
+         </div>';
+    // echo '<button id="myBtn">Disdici abbonamento</button>';
+    }
+    echo'<div class="output_container">
+         <i class="material-icons"> logout </i>
+         <a class="output_field" href="./logout.php">Logout</a>
+         </div>';
     ?>
-    <a href="./logout.php">Logout</a>
+
+<div id="myModal" class="modal">
+
+<div class="modal-content">
+  <span class="close">&times;</span>
+  <p>Vuoi veramente disdire l'abbonamento?</p>
+  <div class="output_container">
+    <form action="" method="post">
+      <input type="submit" name="submit" class="btn" value="Disdici">
+    </form>
+    <?php
+      $error;
+    ?>
+  </div>
+</div>
+</div>
 
     </section>
 

@@ -58,40 +58,24 @@
             ?>
 
         </div>
-
-
-        <div class="mobile__nav">
-
-          <!-- navigation links, hidden by default -->
-          <div id="mobile__links">
-            <a href="./home.php">HOME</a>
-            <a href="#">TRANSCRIPTIONS</a>
-            <a href="#">SUBSCRIBE</a>
-            <a href="./login.php">LOGIN</a>
-          </div>
-
-          <!-- Menu and Bar Icon -->
-          <a href="#" class="icon__nav" onclick="showMenu()">
-            <i class="fa fa-bars"></i>
-          </a>
-        </div>
+        
       </nav>
 
     </header>
 
     <section>
 
-
       <div class="contenuti">
-       <div class="blocco">
+       <div class="blocco_contenuti">
           <img src="../img/abd.jpg" />
           <input class="link-button" type="button" onclick = "location.href ='./transcriptions.php'" value="Transcriptions" />
-          <p>Controlla la lista delle trascrizioni</p>
+          <p>Controlla la lista delle trascrizioni!</p>
         </div>
-        <div class="blocco">
+
+        <div class="blocco_contenuti">
           <img src="../img/lat.jpg" />
           <input class="link-button" type="button" onclick = "location.href ='./subup.php'" value="Subscribe" />
-          <p>Iscriviti al nostro sito per restare sempre aggiornato!</p>
+          <p>Abbonati al sito per avere download illimitati!</p>
         </div>
       </div>
 
